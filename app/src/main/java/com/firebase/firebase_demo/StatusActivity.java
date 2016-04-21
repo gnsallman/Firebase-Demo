@@ -2,7 +2,9 @@ package com.firebase.firebase_demo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.ServerValue;
 import com.firebase.client.ValueEventListener;
 
 import java.util.HashMap;
@@ -43,7 +46,11 @@ public class StatusActivity extends AppCompatActivity {
         senderField = (TextView)findViewById(R.id.textView_sender);
         currentStatusField = (TextView)findViewById(R.id.textView_last_status);
         newStatusField = (EditText)findViewById(R.id.editText_new_status);
+
+
         updateStatusButton = (Button)findViewById(R.id.button_send);
+
+
 
 
         final Firebase usersRef = firebaseRef.child("users");
@@ -70,10 +77,12 @@ public class StatusActivity extends AppCompatActivity {
         Firebase statusRef = firebaseRef.child("status");
         statusRef.addValueEventListener(new ValueEventListener() {
             protected String message;
+            protected String senderId;
+
             @Override
             public void onDataChange(DataSnapshot messageSnapshot) {
                 message = messageSnapshot.child("message").getValue().toString();
-                String senderId = messageSnapshot.child("user").getValue().toString();
+                senderId = messageSnapshot.child("user").getValue().toString();
 
                 // nested call here takes the id found above and does a one-time
                 // call to firebase to lookup the username from the userID
@@ -83,7 +92,10 @@ public class StatusActivity extends AppCompatActivity {
                         String senderName = userSnapshot.getValue().toString();
                         currentStatusField.setText(message);
                         senderField.setText(senderName);
+
+
                     }
+
                     @Override
                     public void onCancelled(FirebaseError firebaseError) {
                     }
@@ -101,13 +113,48 @@ public class StatusActivity extends AppCompatActivity {
         updateStatusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Map<String, String> statusData = new HashMap<>();
-                statusData.put("message", newStatusField.getText().toString());
-                statusData.put("user", currentUserId);
+//                Map<String, String> statusData = new HashMap<>();
+//                String message = newStatusField.getText().toString();
+//                statusData.put("message", message);
+//                statusData.put("user", currentUserId);
+//
+//                firebaseRef.child("status").setValue(statusData);
+//
+//                // clear field
+//
+//                newStatusField.setText("");
+//
+//                // add new message to archive
+//                Map<String, Object> archiveData = new HashMap<>();
+//                archiveData.put("user", currentUserId);
+//                archiveData.put("message", message);
+//                archiveData.put("time", ServerValue.TIMESTAMP);
+//                firebaseRef.child("archive").push().setValue(archiveData);
 
-                firebaseRef.child("status").setValue(statusData);
+                sendStatusUpdate();
             }
         });
+
+    }
+
+    private void sendStatusUpdate(){
+        Map<String, String> statusData = new HashMap<>();
+        String message = newStatusField.getText().toString();
+        statusData.put("message", message);
+        statusData.put("user", currentUserId);
+
+        firebaseRef.child("status").setValue(statusData);
+
+        // clear field
+
+        newStatusField.setText("");
+
+        // add new message to archive
+        Map<String, Object> archiveData = new HashMap<>();
+        archiveData.put("user", currentUserId);
+        archiveData.put("message", message);
+        archiveData.put("time", ServerValue.TIMESTAMP);
+        firebaseRef.child("archive").push().setValue(archiveData);
 
     }
 

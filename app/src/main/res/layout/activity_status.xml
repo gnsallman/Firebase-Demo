@@ -10,145 +10,150 @@
     tools:context="com.firebase.firebase_demo.StatusActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="user_name"
         android:id="@+id/textView_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView"
-        android:layout_toEndOf="@+id/textView" />
+        android:layout_toEndOf="@+id/textView"
+        android:text="user_name"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="user_age"
         android:id="@+id/textView_age"
-        android:layout_below="@+id/textView_name"
-        android:layout_toEndOf="@+id/textView3" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="My Info"
+        android:layout_below="@+id/textView_name"
+        android:layout_toEndOf="@+id/textView3"
+        android:text="user_age"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
         android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:text="My Info"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Name: "
         android:id="@+id/textView"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/textView2"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="16dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Age: "
-        android:id="@+id/textView3"
-        android:layout_alignParentStart="true"
-        android:textStyle="bold"
-        android:layout_below="@+id/textView_name"
-        android:layout_toRightOf="@+id/textView2"
-        android:layout_marginLeft="16dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Most Recent Status"
-        android:id="@+id/textView4"
-        android:layout_below="@+id/textView_age"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="16dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Sender: "
-        android:id="@+id/textView5"
-        android:textStyle="bold"
         android:layout_marginLeft="16dp"
-        android:layout_below="@+id/textView4"
+        android:layout_marginTop="16dp"
+        android:text="Name: "
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="16dp" />
+        android:layout_below="@+id/textView_name"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@+id/textView2"
+        android:text="Age: "
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView_age"
+        android:layout_marginTop="16dp"
+        android:text="Most Recent Status"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView4"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Sender: "
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="sender_name"
+        android:textStyle="bold" />
+
+    <TextView
         android:id="@+id/textView_sender"
-        android:layout_alignTop="@+id/textView5"
-        android:layout_toEndOf="@+id/textView5" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="recent_message_text"
+        android:layout_alignTop="@+id/textView5"
+        android:layout_toEndOf="@+id/textView5"
+        android:text="sender_name"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
         android:id="@+id/textView_last_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/textView5"
+        android:layout_below="@+id/textView5"
+        android:layout_marginLeft="8dp"
         android:layout_marginRight="16dp"
+        android:layout_marginTop="4dp"
+        android:height="72dp"
+        android:autoText="false"
+        android:background="#e2e2e2"
+        android:breakStrategy="balanced"
         android:elevation="-1dp"
+        android:includeFontPadding="true"
         android:nestedScrollingEnabled="true"
         android:scrollIndicators="left"
         android:singleLine="false"
+        android:text="recent_message_text"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:textStyle="italic"
-        android:typeface="normal"
-        android:layout_below="@+id/textView5"
-        android:layout_alignStart="@+id/textView5"
-        android:layout_marginTop="4dp"
-        android:layout_marginLeft="8dp"
-        android:layout_alignParentEnd="true"
-        android:includeFontPadding="true"
-        android:height="72dp" />
+        android:typeface="normal" />
 
     <TextView
+        android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Update Status"
-        android:id="@+id/textView7"
-        android:layout_below="@+id/textView_last_status"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="16dp" />
+        android:layout_below="@+id/textView_last_status"
+        android:layout_marginTop="16dp"
+        android:text="Update Status"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
+        android:id="@+id/editText_new_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/editText_new_status"
-        android:layout_marginRight="16dp"
-        android:elevation="-1dp"
-        android:nestedScrollingEnabled="true"
-        android:scrollIndicators="left"
-        android:singleLine="false"
-        android:typeface="normal"
-        android:layout_marginLeft="8dp"
-        android:maxHeight="144dp"
-        android:layout_below="@+id/textView7"
         android:layout_alignEnd="@+id/textView_last_status"
         android:layout_alignStart="@+id/textView_last_status"
-        android:textStyle="normal"
+        android:layout_below="@+id/textView7"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="16dp"
         android:height="72dp"
+        android:background="#e2e2e2"
+        android:breakStrategy="balanced"
+        android:elevation="-1dp"
+        android:hint="type your message"
+        android:maxHeight="144dp"
+        android:nestedScrollingEnabled="true"
+        android:scrollIndicators="left"
+        android:singleLine="true"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:textIsSelectable="false"
-        android:hint="type your message" />
+        android:textStyle="normal"
+        android:typeface="normal" />
 
     <Button
+        android:id="@+id/button_send"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Send"
-        android:id="@+id/button_send"
+        android:layout_alignStart="@+id/editText_new_status"
         android:layout_below="@+id/editText_new_status"
-        android:layout_alignStart="@+id/editText_new_status" />
+        android:text="Send" />
 
 </RelativeLayout>
