@@ -1,0 +1,38 @@
+{
+  "archive" : {
+    "-KFsJ5VCXtUAoBjyh9CT" : {
+      "message" : "the truth is out there",
+      "time" : 1461233674329,
+      "user" : "039184fa-a143-4fb2-969e-88e6ecab2d43"
+    },
+    "-KFt5Tt5VjpGYsMf4KNF" : {
+      "message" : "new message!",
+      "time" : 1461246882329,
+      "user" : "039184fa-a143-4fb2-969e-88e6ecab2d43"
+    },
+    "-KFt5drHZ9tcoUb7NwyY" : {
+      "message" : "this is a test message",
+      "time" : 1461246927371,
+      "user" : "039184fa-a143-4fb2-969e-88e6ecab2d43"
+    },
+    "-KFtDbu8MKR_ePvUfzId" : {
+      "message" : "hey! this is a status",
+      "time" : 1461249015865,
+      "user" : "5d7ce750-7d90-4ffb-acd9-cd86cd3ed534"
+    }
+  },
+  "status" : {
+    "message" : "hey! this is a status",
+    "user" : "5d7ce750-7d90-4ffb-acd9-cd86cd3ed534"
+  },
+  "users" : {
+    "039184fa-a143-4fb2-969e-88e6ecab2d43" : {
+      "age" : 55,
+      "name" : "Fox Mulder"
+    },
+    "5d7ce750-7d90-4ffb-acd9-cd86cd3ed534" : {
+      "age" : 47,
+      "name" : "Dana Scully"
+    }
+  }
+}
