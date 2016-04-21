@@ -2,9 +2,7 @@ package com.firebase.firebase_demo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -32,13 +30,14 @@ public class StatusActivity extends AppCompatActivity {
     private String currentUserId;
 
 
-
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status);
 
         firebaseRef = new Firebase(FIREBASE_URL);
+
+        //uid of user logged into app
         currentUserId = firebaseRef.getAuth().getUid();
 
         nameField = (TextView)findViewById(R.id.textView_name);
@@ -47,14 +46,10 @@ public class StatusActivity extends AppCompatActivity {
         currentStatusField = (TextView)findViewById(R.id.textView_last_status);
         newStatusField = (EditText)findViewById(R.id.editText_new_status);
 
-
         updateStatusButton = (Button)findViewById(R.id.button_send);
 
 
-
-
         final Firebase usersRef = firebaseRef.child("users");
-
 
         // connects to firebase users/uid and gets a value once, does not create more listeners
         usersRef.child(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -113,24 +108,6 @@ public class StatusActivity extends AppCompatActivity {
         updateStatusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Map<String, String> statusData = new HashMap<>();
-//                String message = newStatusField.getText().toString();
-//                statusData.put("message", message);
-//                statusData.put("user", currentUserId);
-//
-//                firebaseRef.child("status").setValue(statusData);
-//
-//                // clear field
-//
-//                newStatusField.setText("");
-//
-//                // add new message to archive
-//                Map<String, Object> archiveData = new HashMap<>();
-//                archiveData.put("user", currentUserId);
-//                archiveData.put("message", message);
-//                archiveData.put("time", ServerValue.TIMESTAMP);
-//                firebaseRef.child("archive").push().setValue(archiveData);
-
                 sendStatusUpdate();
             }
         });
@@ -146,7 +123,6 @@ public class StatusActivity extends AppCompatActivity {
         firebaseRef.child("status").setValue(statusData);
 
         // clear field
-
         newStatusField.setText("");
 
         // add new message to archive
@@ -155,8 +131,5 @@ public class StatusActivity extends AppCompatActivity {
         archiveData.put("message", message);
         archiveData.put("time", ServerValue.TIMESTAMP);
         firebaseRef.child("archive").push().setValue(archiveData);
-
     }
-
-
 }

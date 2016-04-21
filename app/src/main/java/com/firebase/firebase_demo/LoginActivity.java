@@ -1,11 +1,13 @@
 package com.firebase.firebase_demo;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -32,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_login);
 
+        //create Firebase object to connect
         firebaseRef = new Firebase(FIREBASE_URL);
 
         emailInput = (EditText) findViewById(R.id.editText_email);
@@ -54,14 +57,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                // Hide the soft keyboard on button click
-                // may be a better way to do this or may not be needed at all
-                //
-                // InputMethodManager kbm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                // kbm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-
-                String userEmail = emailInput.getText().toString();
-                String userPassword = passwordInput.getText().toString();
+                //hide keyboard when successfully logged in
+                InputMethodManager kbm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                kbm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
 
                 attemptFirebaseLogin();
             }
@@ -72,7 +70,6 @@ public class LoginActivity extends AppCompatActivity {
     private void attemptFirebaseLogin(){
         String email = this.emailInput.getText().toString();
         String password = this.passwordInput.getText().toString();
-
 
         firebaseRef.authWithPassword(email, password, new Firebase.AuthResultHandler() {
 
