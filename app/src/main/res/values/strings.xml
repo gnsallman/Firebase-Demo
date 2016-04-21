@@ -5,6 +5,8 @@
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="get_data">Get Data from Firebase!</string>
+    <string name="title_activty_status">Profile</string>
+
+    <string name="default_email">fox@truth.ufo</string>
+    <string name="default_password">password</string>
 </resources>
