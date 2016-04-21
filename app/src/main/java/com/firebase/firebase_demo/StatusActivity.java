@@ -48,6 +48,8 @@ public class StatusActivity extends AppCompatActivity {
 
         final Firebase usersRef = firebaseRef.child("users");
 
+
+        // connects to firebase users/uid and gets a value once, does not create more listeners
         usersRef.child(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -62,6 +64,9 @@ public class StatusActivity extends AppCompatActivity {
             }
         });
 
+
+        // creates a listener that looks at the "status" object and is run once
+        // and then every time that someone makes an update to it
         Firebase statusRef = firebaseRef.child("status");
         statusRef.addValueEventListener(new ValueEventListener() {
             protected String message;
@@ -69,6 +74,9 @@ public class StatusActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot messageSnapshot) {
                 message = messageSnapshot.child("message").getValue().toString();
                 String senderId = messageSnapshot.child("user").getValue().toString();
+
+                // nested call here takes the id found above and does a one-time
+                // call to firebase to lookup the username from the userID
                 usersRef.child(senderId).child("name").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot userSnapshot) {
@@ -76,15 +84,10 @@ public class StatusActivity extends AppCompatActivity {
                         currentStatusField.setText(message);
                         senderField.setText(senderName);
                     }
-
                     @Override
                     public void onCancelled(FirebaseError firebaseError) {
-
                     }
                 });
-
-
-
             }
 
             @Override
@@ -93,7 +96,8 @@ public class StatusActivity extends AppCompatActivity {
             }
         });
 
-
+        // listen for the send button to be pushed, then make a hashmap and send
+        // it to firebase
         updateStatusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

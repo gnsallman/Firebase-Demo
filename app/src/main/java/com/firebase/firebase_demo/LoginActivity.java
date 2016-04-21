@@ -37,6 +37,8 @@ public class LoginActivity extends AppCompatActivity {
         emailInput = (EditText) findViewById(R.id.editText_email);
         passwordInput = (EditText) findViewById(R.id.editText_password);
 
+        // neat thing that allows you to hit enter instead of having to find button
+        // probably should implement in other activity as well
         passwordInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -51,8 +53,10 @@ public class LoginActivity extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 // Hide the soft keyboard on button click
                 // may be a better way to do this or may not be needed at all
+                //
                 // InputMethodManager kbm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 // kbm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
 
@@ -75,7 +79,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onAuthenticated(AuthData authData) {
                 startActivity(new Intent(LoginActivity.this, StatusActivity.class));
-                //LoginActivity.this.finish();
             }
 
             @Override
