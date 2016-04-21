@@ -126,7 +126,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="new_message_text"
         android:id="@+id/editText_new_status"
         android:layout_marginRight="16dp"
         android:elevation="-1dp"
@@ -141,7 +140,8 @@
         android:layout_alignStart="@+id/textView_last_status"
         android:textStyle="normal"
         android:height="72dp"
-        android:textIsSelectable="false" />
+        android:textIsSelectable="false"
+        android:hint="type your message" />
 
     <Button
         android:layout_width="wrap_content"

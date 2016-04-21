@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onAuthenticated(AuthData authData) {
                 startActivity(new Intent(LoginActivity.this, StatusActivity.class));
-                LoginActivity.this.finish();
+                //LoginActivity.this.finish();
             }
 
             @Override
